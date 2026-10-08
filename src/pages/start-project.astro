@@ -1,0 +1,897 @@
+---
+// src/pages/start-project.astro
+// LIDKA GLOBAL - Interactive Project Planner & Scoping Intake
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const pageUrl = `${siteUrl}/start-project`;
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "Start a Project — LIDKA GLOBAL | Android & Web Scope Intake";
+const pageDescription = "Configure your Android app or Astro web platform requirements, select specifications, and submit your project scope to LIDKA GLOBAL.";
+const currentYear = new Date().getFullYear();
+
+// Schema.org Structured Data
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "name": companyName,
+        "url": siteUrl
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Start Project",
+            "item": pageUrl
+          }
+        ]
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO & Indexation -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
+
+    <!-- Schema Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --slate-700: #334155;
+        --slate-600: #475569;
+        --slate-500: #64748b;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --emerald: #10b981;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #ffffff;
+        color: var(--slate-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--slate-900);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Header */
+      .page-hero {
+        padding: 60px 0 40px;
+        text-align: center;
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .page-title {
+        font-size: 2.6rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--slate-900);
+        margin-bottom: 12px;
+      }
+
+      .page-desc {
+        font-size: 1.1rem;
+        color: var(--slate-600);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* Form Layout */
+      .form-section {
+        padding: 60px 0 90px;
+      }
+
+      .form-container {
+        background: white;
+        border: 1px solid var(--slate-200);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+      }
+
+      .step-group {
+        margin-bottom: 40px;
+        padding-bottom: 32px;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .step-group:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .step-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.88rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .step-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--slate-900);
+      }
+
+      /* Platform Selection Cards */
+      .type-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .type-card {
+        border: 2px solid var(--slate-200);
+        border-radius: 14px;
+        padding: 24px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        background: var(--slate-50);
+      }
+
+      .type-card:hover {
+        border-color: var(--primary);
+        background: white;
+      }
+
+      .type-card.selected {
+        border-color: var(--primary);
+        background: white;
+        box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+      }
+
+      .type-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+
+      .type-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--slate-900);
+        margin-bottom: 6px;
+      }
+
+      .type-desc {
+        font-size: 0.85rem;
+        color: var(--slate-600);
+        line-height: 1.5;
+      }
+
+      /* Checkbox Pills Grid */
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .spec-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--slate-200);
+        background: var(--slate-50);
+        cursor: pointer;
+        user-select: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--slate-700);
+        transition: all 0.15s ease;
+      }
+
+      .spec-item:hover {
+        background: white;
+        border-color: var(--slate-300);
+      }
+
+      .spec-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+        cursor: pointer;
+      }
+
+      /* Text Input Styling */
+      .input-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--slate-700);
+        margin-bottom: 8px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 10px;
+        border: 1px solid var(--slate-200);
+        background-color: var(--slate-50);
+        font-family: inherit;
+        font-size: 0.92rem;
+        color: var(--slate-900);
+        outline: none;
+        transition: border-color 0.2s ease, background-color 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--primary);
+        background-color: #ffffff;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Submit Button */
+      .submit-btn {
+        width: 100%;
+        padding: 16px;
+        border-radius: 10px;
+        background-color: var(--primary);
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+        transition: all 0.2s ease;
+      }
+
+      .submit-btn:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: var(--slate-500);
+        margin-top: 12px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 64px 0 32px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-col h5 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.88rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--slate-200);
+        font-size: 0.82rem;
+        color: var(--slate-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+        background: white;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate-700);
+        font-weight: 600;
+        padding: 6px 0;
+      }
+
+      @media (max-width: 768px) {
+        .type-grid, .spec-grid, .input-row {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .form-container {
+          padding: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav-bar">
+        <a href="/" class="logo-link">
+          <div class="logo-badge">L</div>
+          <span>LIDKA GLOBAL</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <button id="mobileBtn" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/start-project" style="color: var(--primary);">Start Project &rarr;</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="badge-pill">Project Scoping & Intake</div>
+          <h1 class="page-title">Start a Project</h1>
+          <p class="page-desc">
+            Select your platform requirements, check your desired specifications, and send your technical brief directly to our team.
+          </p>
+        </div>
+      </section>
+
+      <!-- Scoping Form -->
+      <section class="form-section">
+        <div class="container">
+          <div class="form-container">
+            <form id="projectScopingForm">
+              
+              <!-- STEP 1: Select Platform -->
+              <div class="step-group">
+                <div class="step-header">
+                  <span class="step-num">1</span>
+                  <h2 class="step-title">Select Platform</h2>
+                </div>
+
+                <div class="type-grid">
+                  <!-- Option: Android -->
+                  <div class="type-card selected" id="cardAndroid" onclick="selectPlatform('Android')">
+                    <div class="type-icon" style="background: #eff6ff; color: #2563eb;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                        <path d="M12 18h.01"/>
+                      </svg>
+                    </div>
+                    <div class="type-title">Native Android App</div>
+                    <div class="type-desc">Kotlin, Jetpack Compose, Play Store readiness, and offline-first Room DB architecture.</div>
+                  </div>
+
+                  <!-- Option: Web -->
+                  <div class="type-card" id="cardWeb" onclick="selectPlatform('Web')">
+                    <div class="type-icon" style="background: #f0fdf4; color: #16a34a;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="2" x2="22" y1="12" y2="12"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/>
+                      </svg>
+                    </div>
+                    <div class="type-title">High-Speed Web Platform</div>
+                    <div class="type-desc">Astro framework, zero JavaScript bloat, sub-100ms TTFB, and Cloudflare edge delivery.</div>
+                  </div>
+                </div>
+                <input type="hidden" id="selectedPlatform" name="platform" value="Android" />
+              </div>
+
+              <!-- STEP 2: Specifications -->
+              <div class="step-group">
+                <div class="step-header">
+                  <span class="step-num">2</span>
+                  <h2 class="step-title">Select Specifications & Features</h2>
+                </div>
+
+                <!-- Android Specs (Default visible) -->
+                <div id="androidSpecs">
+                  <p style="font-size: 0.88rem; color: var(--slate-600); margin-bottom: 8px;">Check technical features required for your Android application:</p>
+                  <div class="spec-grid">
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Modern Jetpack Compose UI" checked />
+                      <span>Jetpack Compose UI</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Offline Room Local Database" checked />
+                      <span>Offline Room Database</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Google AdMob Integration" />
+                      <span>Google AdMob Integration</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Google Play Console ASO & Launch" />
+                      <span>Play Store ASO & Submission</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Push Notifications & WorkManager" />
+                      <span>Background Sync / Notifications</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="REST API & Backend Integration" />
+                      <span>Cloud REST API Integration</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Web Specs (Hidden until toggled) -->
+                <div id="webSpecs" style="display: none;">
+                  <p style="font-size: 0.88rem; color: var(--slate-600); margin-bottom: 8px;">Check technical features required for your web project:</p>
+                  <div class="spec-grid">
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Astro Static Site Generation" />
+                      <span>Astro Static Generation</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Sub-Second Core Web Vitals (100/100)" />
+                      <span>Core Web Vitals Optimization</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Googlebot Crawlable Sitemaps & Schemas" />
+                      <span>Googlebot Sitemaps & Schema</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Cloudflare Pages Edge CDN Hosting" />
+                      <span>Cloudflare Global Edge CDN</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Custom Calculation Tool / Engine" />
+                      <span>Interactive Client Calculation Tool</span>
+                    </label>
+                    <label class="spec-item">
+                      <input type="checkbox" name="spec" value="Contact Form & Lead Routing" />
+                      <span>Email & Contact Lead Routing</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 3: Timeline & Budget -->
+              <div class="step-group">
+                <div class="step-header">
+                  <span class="step-num">3</span>
+                  <h2 class="step-title">Project Parameters</h2>
+                </div>
+
+                <div class="input-row">
+                  <div class="input-group" style="margin-bottom: 0;">
+                    <label for="projectTimeline">Desired Delivery Timeline</label>
+                    <select id="projectTimeline" name="timeline">
+                      <option value="Standard (2 - 4 Weeks)">Standard (2 to 4 Weeks)</option>
+                      <option value="Urgent (1 - 2 Weeks)">Urgent (1 to 2 Weeks)</option>
+                      <option value="Flexible (1 - 2 Months)">Flexible (1 to 2 Months)</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group" style="margin-bottom: 0;">
+                    <label for="projectStatus">Current Project Stage</label>
+                    <select id="projectStatus" name="status">
+                      <option value="New Project from Scratch">New Project from Scratch</option>
+                      <option value="Redesign / Modernization of Existing App">Modernization of Existing App/Site</option>
+                      <option value="Ongoing Maintenance & Performance Optimization">Performance & Bug Fixing</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 4: Contact & Scope Details -->
+              <div class="step-group">
+                <div class="step-header">
+                  <span class="step-num">4</span>
+                  <h2 class="step-title">Contact & Requirements</h2>
+                </div>
+
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="clientName">Your Name / Organization</label>
+                    <input type="text" id="clientName" required placeholder="e.g. Saravanan Kannan" />
+                  </div>
+                  <div class="input-group">
+                    <label for="clientEmail">Your Email Address</label>
+                    <input type="email" id="clientEmail" required placeholder="e.g. saravanan@example.com" />
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <label for="projectBrief">Project Summary & Core Vision</label>
+                  <textarea id="projectBrief" required placeholder="Describe what the app or site should do, main user actions, and any specific preferences..."></textarea>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="submit-btn">
+                Send Scope to {contactEmail} &rarr;
+              </button>
+              <p class="btn-note">
+                Clicking opens your default email client with your configured specifications pre-filled.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-link" style="margin-bottom: 12px;">
+              <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">L</div>
+              <span style="font-size: 1.1rem;">LIDKA GLOBAL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate-500); line-height: 1.6; margin-bottom: 8px;">
+              Independent software and app engineering firm creating lightweight, scalable tools.
+            </p>
+            <p style="font-size: 0.8rem; color: var(--slate-700); font-family: 'JetBrains Mono', monospace;">
+              lidkaglobal.com
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Legal & Security</h5>
+            <ul>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Direct Contact</h5>
+            <ul>
+              <li>
+                <a href={`mailto:${contactEmail}`} style="font-weight: 600; color: var(--primary);">
+                  {contactEmail}
+                </a>
+              </li>
+              <li style="font-size: 0.8rem; color: var(--slate-500); margin-top: 8px;">
+                Direct inquiries answered within 24 business hours.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; {currentYear} LIDKA GLOBAL. All rights reserved.</div>
+          <div>
+            <a href="/privacy" style="text-decoration: none; color: var(--slate-500); margin-right: 16px;">Privacy</a>
+            <a href="/terms" style="text-decoration: none; color: var(--slate-500);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Interactive Client Script -->
+    <script is:inline>
+      // Platform Switcher
+      function selectPlatform(type) {
+        document.getElementById('selectedPlatform').value = type;
+        const cardAndroid = document.getElementById('cardAndroid');
+        const cardWeb = document.getElementById('cardWeb');
+        const androidSpecs = document.getElementById('androidSpecs');
+        const webSpecs = document.getElementById('webSpecs');
+
+        if (type === 'Android') {
+          cardAndroid.classList.add('selected');
+          cardWeb.classList.remove('selected');
+          androidSpecs.style.display = 'block';
+          webSpecs.style.display = 'none';
+        } else {
+          cardWeb.classList.add('selected');
+          cardAndroid.classList.remove('selected');
+          webSpecs.style.display = 'block';
+          androidSpecs.style.display = 'none';
+        }
+      }
+
+      // Mobile Drawer Toggle
+      const btn = document.getElementById('mobileBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+
+      // Submission Form Handler -> Pre-fills Email to lidkaglobal@gmail.com
+      const form = document.getElementById('projectScopingForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const platform = document.getElementById('selectedPlatform').value;
+          const timeline = document.getElementById('projectTimeline').value;
+          const status = document.getElementById('projectStatus').value;
+          const name = document.getElementById('clientName').value;
+          const email = document.getElementById('clientEmail').value;
+          const brief = document.getElementById('projectBrief').value;
+
+          // Collect checked specifications
+          const checkedSpecs = Array.from(
+            document.querySelectorAll('input[name="spec"]:checked')
+          ).map((cb) => `- ${cb.value}`).join('\n');
+
+          const subject = encodeURIComponent(`New Project Scope: [${platform}] from ${name}`);
+          
+          const bodyText = 
+`PROJECT INTAKE BRIEF — LIDKA GLOBAL
+--------------------------------------------------
+CLIENT INFORMATION:
+Name: ${name}
+Email: ${email}
+
+PROJECT CONFIGURATION:
+Platform: ${platform}
+Timeline: ${timeline}
+Current Stage: ${status}
+
+SELECTED SPECIFICATIONS & FEATURES:
+${checkedSpecs || '- General Specification Review'}
+
+PROJECT BRIEF & SCOPE:
+${brief}
+--------------------------------------------------
+Sent via lidkaglobal.com/start-project`;
+
+          const mailtoUri = `mailto:lidkaglobal@gmail.com?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
+          
+          window.location.href = mailtoUri;
+        });
+      }
+    </script>
+  </body>
+</html>
