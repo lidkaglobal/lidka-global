@@ -1,50 +1,607 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// src/pages/index.astro
+// LIDKA GLOBAL - Official Index Optimized for Google Search Console & SEO
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "LIDKA GLOBAL | Android App & High-Performance Web Development";
+const pageDescription = "LIDKA GLOBAL designs native Android applications (Kotlin), high-speed web platforms, and custom calculation utilities engineered for modern businesses.";
+const currentYear = new Date().getFullYear();
+
+// Structured Data (JSON-LD) for Instant Google Indexing
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": companyName,
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.svg`,
+      "email": contactEmail,
+      "description": pageDescription,
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": contactEmail,
+          "contactType": "customer support"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": companyName,
+      "description": pageDescription,
+      "publisher": {
+        "@id": `${siteUrl}/#organization`
+      }
+    }
+  ]
+};
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Metadata -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={siteUrl} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="author" content={companyName} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Meta -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+
+    <!-- Google Crawler Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Performance & Font Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --bg-main: #060913;
+        --card-bg: rgba(15, 23, 42, 0.7);
+        --card-border: rgba(255, 255, 255, 0.09);
+        --accent-sky: #38bdf8;
+        --accent-indigo: #6366f1;
+        --accent-emerald: #10b981;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: var(--bg-main);
+        color: #f1f5f9;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      .code-font {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .glass-panel {
+        background: var(--card-bg);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid var(--card-border);
+      }
+
+      .glass-panel:hover {
+        border-color: rgba(56, 189, 248, 0.35);
+      }
+
+      .brand-gradient {
+        background: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #d946ef 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .glow-orb-1 {
+        position: absolute;
+        top: -120px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 750px;
+        height: 750px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+        filter: blur(80px);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .glow-orb-2 {
+        position: absolute;
+        top: 55%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(16, 185, 129, 0.04) 50%, transparent 70%);
+        filter: blur(90px);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .tech-pill {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        transition: all 0.3s ease;
+      }
+      .tech-pill:hover {
+        border-color: #38bdf8;
+        transform: translateY(-2px);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body class="relative min-h-screen">
+    <!-- Ambient Background Glows -->
+    <div class="glow-orb-1" aria-hidden="true"></div>
+    <div class="glow-orb-2" aria-hidden="true"></div>
+
+    <!-- Crawlable Navigation Header -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-white/10 px-6 lg:px-12 py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group" title="LIDKA GLOBAL Home">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+            L
+          </div>
+          <div class="flex flex-col">
+            <span class="font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
+              LIDKA<span class="brand-gradient font-black">GLOBAL</span>
+            </span>
+            <span class="text-[10px] tracking-widest text-slate-400 font-semibold uppercase -mt-1">Apps & Web Engineering</span>
+          </div>
+        </a>
+
+        <!-- Desktop Crawlable Navigation -->
+        <nav aria-label="Main Navigation" class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+          <a href="#home" class="hover:text-sky-400 transition-colors">Home</a>
+          <a href="#services" class="hover:text-sky-400 transition-colors">Services</a>
+          <a href="#solutions" class="hover:text-sky-400 transition-colors">Solutions</a>
+          <a href="#tech" class="hover:text-sky-400 transition-colors">Tech Stack</a>
+          <a href="#contact" class="hover:text-sky-400 transition-colors">Contact</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-4">
+          <a 
+            href="#contact" 
+            class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-lg shadow-indigo-600/30 transition-all hover:scale-105"
+          >
+            Start Project &rarr;
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobileMenuBtn" aria-label="Open Mobile Navigation" class="md:hidden text-slate-300 hover:text-white p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <nav id="mobileMenu" aria-label="Mobile Navigation" class="hidden md:hidden pt-4 pb-6 flex flex-col gap-4 border-t border-white/5 mt-3">
+        <a href="#home" class="text-slate-300 hover:text-sky-400 font-medium">Home</a>
+        <a href="#services" class="text-slate-300 hover:text-sky-400 font-medium">Services</a>
+        <a href="#solutions" class="text-slate-300 hover:text-sky-400 font-medium">Solutions</a>
+        <a href="#tech" class="text-slate-300 hover:text-sky-400 font-medium">Tech Stack</a>
+        <a href="#contact" class="text-slate-300 hover:text-sky-400 font-medium">Contact</a>
+        <a href="#contact" class="w-full text-center py-3 rounded-xl font-bold bg-sky-500 text-white">Start Project</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section id="home" class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-24 md:pt-28 md:pb-36 flex flex-col lg:flex-row items-center justify-between gap-16">
+        <article class="w-full lg:w-7/12 flex flex-col gap-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 self-center lg:self-start px-3.5 py-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 text-sky-300 text-xs font-semibold tracking-wide">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Android Mobile Apps & Web Engineering Enterprise
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+            Engineering <span class="brand-gradient">High-Performance</span> Mobile Apps & Fast Web Systems.
+          </h1>
+          
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl font-normal leading-relaxed">
+            Welcome to <strong class="text-white font-semibold">{companyName}</strong>. We craft native Android applications with Kotlin, responsive Astro web portals, and micro calculation utilities focused on blistering speed, lightweight footprints, and zero bloatware.
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+            <a 
+              href="#contact" 
+              class="px-8 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-sky-500 via-indigo-600 to-indigo-700 hover:from-sky-400 hover:to-indigo-600 text-white shadow-xl shadow-sky-500/25 transition-all transform hover:-translate-y-0.5"
+            >
+              Start Your Project
+            </a>
+            <a 
+              href="#services" 
+              class="px-8 py-3.5 rounded-xl font-semibold text-sm glass-panel text-slate-200 hover:text-white hover:bg-white/5 transition-all"
+            >
+              Explore Our Services
+            </a>
+          </div>
+
+          <div class="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 border-t border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-400 font-bold text-base">&#10003;</span> Native Kotlin & Jetpack Compose
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-sky-400 font-bold text-base">&#10003;</span> Sub-Second Web Response Times
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-indigo-400 font-bold text-base">&#10003;</span> Global Cloud Edge Infrastructure
+            </div>
+          </div>
+        </article>
+
+        <!-- Smartphone Graphics Showcase -->
+        <aside class="w-full lg:w-5/12 flex justify-center relative" aria-label="Mobile Product Architecture Preview">
+          <div class="animate-float relative w-72 sm:w-80 h-[510px] rounded-[42px] border-4 border-slate-700/60 bg-slate-950 p-3 shadow-2xl shadow-sky-500/20 glass-panel">
+            <div class="w-28 h-4 bg-slate-900 rounded-full mx-auto mb-3 flex items-center justify-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-slate-800"></div>
+              <div class="w-8 h-1 rounded-full bg-slate-800"></div>
+            </div>
+
+            <div class="w-full h-[440px] rounded-[30px] bg-slate-900/90 overflow-hidden border border-white/5 flex flex-col p-4 justify-between">
+              <div>
+                <div class="flex justify-between items-center text-xs text-slate-400 pb-3 border-b border-white/10">
+                  <span class="font-bold text-white tracking-wider">LIDKA CORE</span>
+                  <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-md font-mono">100% Crawlable</span>
+                </div>
+                
+                <div class="mt-4 p-3 rounded-xl bg-slate-800/60 border border-white/5 flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-400 text-sm font-bold">
+                    ⚡
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Ultra Fast Core Web Vitals</div>
+                    <div class="text-[10px] text-slate-400">Zero cumulative layout shift</div>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-3 rounded-xl bg-slate-800/60 border border-white/5 flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-lg bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-400 text-sm font-bold">
+                    🛡️
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Production Android Architecture</div>
+                    <div class="text-[10px] text-slate-400">Offline-first local Room storage</div>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-3 rounded-lg bg-black/40 border border-white/5 font-mono text-[10px] text-sky-300">
+                  <p class="text-slate-500">// Google Search Console Status</p>
+                  <p>Indexation: <span class="text-emerald-400">Valid XML & Semantic</span></p>
+                  <p>Latency: <span class="text-slate-200">Sub-100ms Edge Delivery</span></p>
+                </div>
+              </div>
+
+              <div class="w-full py-2.5 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-600 text-center text-white font-bold text-xs tracking-wide">
+                Engineered By LIDKA GLOBAL
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-white/5">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-widest text-sky-400 font-bold">Engineering Services</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">What We Build at LIDKA GLOBAL</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">From mobile application engineering to high-performance web utilities, our code is built for longevity and real user engagement.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Card 1 -->
+          <article class="glass-panel p-8 rounded-2xl flex flex-col justify-between transition-all hover:-translate-y-1">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-xl font-bold mb-6">
+                📱
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Android App Development</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Native Android engineering using Kotlin, Jetpack Compose, Coroutines, and modern architecture components. Optimized for low storage overhead and clean memory footprint.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-2"><span class="text-sky-400">•</span> Play Console Deployment & ASO</li>
+              <li class="flex items-center gap-2"><span class="text-sky-400">•</span> AdMob Ad Unit Integration</li>
+              <li class="flex items-center gap-2"><span class="text-sky-400">•</span> Offline-first Room Databases</li>
+            </ul>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="glass-panel p-8 rounded-2xl flex flex-col justify-between transition-all hover:-translate-y-1 border-sky-500/20">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-400/30 flex items-center justify-center text-indigo-400 text-xl font-bold mb-6">
+                🌐
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">High-Speed Web Portals</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Modern static and server-rendered web platforms built using Astro and Tailwind CSS. Structured specifically for fast crawling by search engines and top Core Web Vitals.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-2"><span class="text-indigo-400">•</span> 100/100 Google Lighthouse Performance</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">•</span> Cloudflare Pages Edge Deployment</li>
+              <li class="flex items-center gap-2"><span class="text-indigo-400">•</span> Automated XML Sitemaps & robots.txt</li>
+            </ul>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="glass-panel p-8 rounded-2xl flex flex-col justify-between transition-all hover:-translate-y-1">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-400/30 flex items-center justify-center text-emerald-400 text-xl font-bold mb-6">
+                ⚙️
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Web Utilities & Calculators</h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Client-side tools, pay commission matrices, document image processors, and interactive utilities with instant execution and zero lag.
+              </p>
+            </div>
+            <ul class="text-xs text-slate-300 space-y-2 border-t border-white/5 pt-4">
+              <li class="flex items-center gap-2"><span class="text-emerald-400">•</span> Client-Side Zero Server Latency</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">•</span> High Organic Search Intent Pages</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">•</span> Mobile-Responsive Touch UIs</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Solutions & Architecture -->
+      <section id="solutions" class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-white/5">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-widest text-sky-400 font-bold">Proven Development Flow</span>
+          <h2 class="text-3xl font-extrabold text-white mt-2">How We Deliver Software</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="p-6 rounded-2xl glass-panel">
+            <div class="text-3xl font-black text-sky-500/40 mb-3 font-mono">01</div>
+            <h4 class="text-base font-bold text-white mb-2">Technical Scoping</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Analyzing requirements, architectural blueprints, UI design systems, and data schemas.</p>
+          </div>
+          <div class="p-6 rounded-2xl glass-panel">
+            <div class="text-3xl font-black text-indigo-500/40 mb-3 font-mono">02</div>
+            <h4 class="text-base font-bold text-white mb-2">Clean Sprint Coding</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Building modular, maintainable codebases adhering to strict industry standards.</p>
+          </div>
+          <div class="p-6 rounded-2xl glass-panel">
+            <div class="text-3xl font-black text-pink-500/40 mb-3 font-mono">03</div>
+            <h4 class="text-base font-bold text-white mb-2">Auditing & Core Vitals</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Rigorous performance profiling, network speed checks, and Google mobile accessibility validation.</p>
+          </div>
+          <div class="p-6 rounded-2xl glass-panel">
+            <div class="text-3xl font-black text-emerald-500/40 mb-3 font-mono">04</div>
+            <h4 class="text-base font-bold text-white mb-2">Production Release</h4>
+            <p class="text-slate-400 text-xs leading-relaxed">Live publishing to Google Play Console or edge networks with Search Console sitemap setup.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technology Stack -->
+      <section id="tech" class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-16">
+        <div class="glass-panel rounded-3xl p-8 sm:p-12 text-center">
+          <h3 class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">Our Core Technology Ecosystem</h3>
+          <p class="text-2xl font-bold text-white mb-8">Modern, fast, and search-engine-friendly technologies</p>
+          
+          <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-4xl mx-auto">
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Kotlin</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Jetpack Compose</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Android SDK</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Astro Framework</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Tailwind CSS</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Cloudflare Pages</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Google Play Console</div>
+            <div class="tech-pill px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-200">Google Search Console</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Direct Contact Section -->
+      <section id="contact" class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 border-t border-white/5">
+        <div class="glass-panel rounded-3xl p-8 sm:p-14 border border-white/10 max-w-4xl mx-auto">
+          <div class="text-center mb-10">
+            <span class="text-xs uppercase tracking-widest text-sky-400 font-bold">Start Your Project</span>
+            <h2 class="text-3xl font-extrabold text-white mt-1">Get In Touch With {companyName}</h2>
+            <p class="text-slate-400 text-sm mt-2">Have an Android app or modern web project in mind? Reach out directly.</p>
+          </div>
+
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="senderName" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Name</label>
+                <input 
+                  type="text" 
+                  id="senderName" 
+                  required 
+                  placeholder="e.g. John Doe"
+                  class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sky-500 transition-colors"
+                />
+              </div>
+              <div>
+                <label for="senderEmail" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Your Email</label>
+                <input 
+                  type="email" 
+                  id="senderEmail" 
+                  required 
+                  placeholder="e.g. john@example.com"
+                  class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sky-500 transition-colors"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="projectType" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Project Category</label>
+              <select 
+                id="projectType"
+                class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sky-500 transition-colors"
+              >
+                <option value="Android Mobile App">Native Android Mobile Application</option>
+                <option value="Modern Web Platform">High-Performance Astro Web Portal</option>
+                <option value="Web Utility & Calculator">Online Utility or Calculator Tool</option>
+                <option value="General Partnership">General Consultation / Inquiry</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="messageContent" class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Project Details</label>
+              <textarea 
+                id="messageContent" 
+                rows="4" 
+                required 
+                placeholder="Describe your vision, core features, and anticipated timeline..."
+                class="w-full bg-slate-900/80 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sky-500 transition-colors"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-xl shadow-indigo-600/25 transition-all"
+            >
+              Compose Email to {contactEmail}
+            </button>
+          </form>
+
+          <div class="mt-6 text-center text-xs text-slate-400">
+            Direct Email: <a href={`mailto:${contactEmail}`} class="text-sky-400 hover:underline">{contactEmail}</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Comprehensive Crawlable Footer -->
+    <footer class="relative z-10 glass-panel border-t border-white/10 py-16 px-6 lg:px-12 mt-20">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/5">
+        <div class="md:col-span-1 flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center font-bold text-white">L</div>
+            <span class="font-extrabold text-lg text-white">LIDKA<span class="text-sky-400">GLOBAL</span></span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Independent mobile app enterprise and web engineering agency. Crafting purpose-built digital experiences.
+          </p>
+          <div class="text-[11px] text-slate-400 font-mono mt-2">
+            Domain: <a href={siteUrl} class="text-white hover:underline">lidkaglobal.com</a>
+          </div>
+        </div>
+
+        <div>
+          <h5 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Core Solutions</h5>
+          <ul class="text-xs space-y-2.5 text-slate-400">
+            <li><a href="#services" class="hover:text-sky-400 transition-colors">Android Mobile Apps</a></li>
+            <li><a href="#services" class="hover:text-sky-400 transition-colors">Astro Static Web Architecture</a></li>
+            <li><a href="#services" class="hover:text-sky-400 transition-colors">Web Calculation Engines</a></li>
+            <li><a href="#services" class="hover:text-sky-400 transition-colors">Google Play ASO Optimization</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Quick Links</h5>
+          <ul class="text-xs space-y-2.5 text-slate-400">
+            <li><a href="#home" class="hover:text-sky-400 transition-colors">Home Overview</a></li>
+            <li><a href="#services" class="hover:text-sky-400 transition-colors">Capabilities</a></li>
+            <li><a href="#solutions" class="hover:text-sky-400 transition-colors">Our Process</a></li>
+            <li><a href="#tech" class="hover:text-sky-400 transition-colors">Tech Stack</a></li>
+            <li><a href="#contact" class="hover:text-sky-400 transition-colors">Direct Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="text-xs uppercase tracking-wider font-bold text-white mb-4">Official Contact</h5>
+          <ul class="text-xs space-y-2.5 text-slate-400">
+            <li class="flex items-center gap-2">
+              <span class="text-sky-400">✉</span>
+              <a href={`mailto:${contactEmail}`} class="hover:text-white transition-colors">{contactEmail}</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-emerald-400">●</span>
+              <span>Open for New Projects</span>
+            </li>
+            <li class="pt-2 text-[11px] text-slate-400">
+              Official inquiries answered within 24 hours.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div>
+          &copy; {currentYear} LIDKA GLOBAL (lidkaglobal.com). All rights reserved.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="/privacy" class="hover:text-slate-200">Privacy Policy</a>
+          <a href="/terms" class="hover:text-slate-200">Terms of Service</a>
+          <!-- Crawlable Sitemap Link for Googlebot -->
+          <a href="/sitemap-index.xml" class="hover:text-sky-400 font-mono">sitemap.xml</a>
+          <a href="/robots.txt" class="hover:text-sky-400 font-mono">robots.txt</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Minimal Client-side Script (Does not block Googlebot indexing) -->
+    <script is:inline>
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+
+      const form = document.getElementById('contactForm');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('senderName').value;
+          const email = document.getElementById('senderEmail').value;
+          const type = document.getElementById('projectType').value;
+          const msg = document.getElementById('messageContent').value;
+
+          const subject = encodeURIComponent(`LIDKA GLOBAL Inquiry: ${name} - ${type}`);
+          const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject Type: ${type}\n\nProject Brief:\n${msg}`);
+
+          window.location.href = `mailto:lidkaglobal@gmail.com?subject=${subject}&body=${body}`;
+        });
+      }
+    </script>
+  </body>
 </html>
