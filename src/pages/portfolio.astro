@@ -1,0 +1,820 @@
+---
+// src/pages/portfolio.astro
+// LIDKA GLOBAL - Official Portfolio & Solutions Showcase
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const pageUrl = `${siteUrl}/portfolio`;
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "Portfolio & Solutions — LIDKA GLOBAL | Android & Web Products";
+const pageDescription = "Explore native Android mobile applications, high-performance web platforms, and utilities engineered by LIDKA GLOBAL.";
+const currentYear = new Date().getFullYear();
+
+// SEO Schema.org (JSON-LD) for Portfolio Page & Google Search Console
+const portfolioSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "name": companyName,
+        "url": siteUrl
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Portfolio",
+            "item": pageUrl
+          }
+        ]
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Essentials -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
+
+    <!-- Schema Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(portfolioSchema)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --slate-700: #334155;
+        --slate-600: #475569;
+        --slate-500: #64748b;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --emerald: #10b981;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #ffffff;
+        color: var(--slate-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--slate-900);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover, .nav-links a.active {
+        color: var(--primary);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn-dark {
+        background-color: var(--slate-900);
+        color: white;
+      }
+
+      .btn-dark:hover {
+        background-color: var(--slate-800);
+      }
+
+      /* Page Hero */
+      .page-hero {
+        padding: 70px 0 50px;
+        text-align: center;
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+
+      .page-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: -1.2px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .page-desc {
+        font-size: 1.15rem;
+        color: var(--slate-600);
+        max-width: 680px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Portfolio Grid */
+      .portfolio-section {
+        padding: 80px 0 100px;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px;
+      }
+
+      .project-card {
+        background: white;
+        border: 1px solid var(--slate-200);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+        border-color: #bfdbfe;
+        box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.1);
+      }
+
+      .card-preview {
+        background: #0f172a;
+        padding: 32px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--slate-800);
+      }
+
+      .preview-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.1);
+        color: #e2e8f0;
+      }
+
+      .preview-metric {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        color: #34d399;
+        background: rgba(16, 185, 129, 0.15);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 600;
+      }
+
+      .card-body {
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+      }
+
+      .category-tag {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .project-title {
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin-bottom: 12px;
+        letter-spacing: -0.4px;
+      }
+
+      .project-desc {
+        font-size: 0.95rem;
+        color: var(--slate-600);
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tech-chip {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: var(--slate-100);
+        color: var(--slate-700);
+        border: 1px solid var(--slate-200);
+      }
+
+      .card-footer {
+        padding-top: 20px;
+        border-top: 1px solid var(--slate-200);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--slate-600);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--emerald);
+      }
+
+      .view-link {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .view-link:hover {
+        text-decoration: underline;
+      }
+
+      /* CTA Banner */
+      .cta-section {
+        padding: 0 0 90px;
+      }
+
+      .cta-box {
+        background: linear-gradient(135deg, var(--slate-900), #1e293b);
+        border-radius: 24px;
+        padding: 56px 48px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .cta-box h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+
+      .cta-box p {
+        color: #94a3b8;
+        font-size: 1rem;
+        max-width: 520px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 64px 0 32px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-col h5 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.88rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--slate-200);
+        font-size: 0.82rem;
+        color: var(--slate-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+        background: white;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate-700);
+        font-weight: 600;
+        padding: 6px 0;
+      }
+
+      @media (max-width: 900px) {
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-box {
+          flex-direction: column;
+          text-align: center;
+          gap: 28px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-links, .header-cta {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .page-title {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav-bar">
+        <a href="/" class="logo-link">
+          <div class="logo-badge">L</div>
+          <span>LIDKA GLOBAL</span>
+        </a>
+
+        <!-- Individual Crawlable Links -->
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio" class="active">Portfolio</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="header-cta">
+          <a href="/start-project" class="btn btn-dark">Start Project &rarr;</a>
+        </div>
+
+        <button id="mobileBtn" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio" style="color: var(--primary);">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/start-project" style="color: var(--primary);">Start Project &rarr;</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="badge-pill">Featured Products & Engineering</div>
+          <h1 class="page-title">Portfolio & Solutions</h1>
+          <p class="page-desc">
+            Explore our software solutions across native Android development, high-speed static web portals, and lightweight digital utilities.
+          </p>
+        </div>
+      </section>
+
+      <!-- Projects Grid -->
+      <section class="portfolio-section">
+        <div class="container">
+          <div class="portfolio-grid">
+
+            <!-- Project 1: Android Utility App -->
+            <article class="project-card">
+              <div class="card-preview">
+                <span class="preview-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                    <path d="M12 18h.01"/>
+                  </svg>
+                  Android Utility
+                </span>
+                <span class="preview-metric">Google Play Active</span>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="category-tag">Native Android App</div>
+                  <h2 class="project-title">Utility & Calendar Application</h2>
+                  <p class="project-desc">
+                    A lightweight native Android utility built using modern Kotlin and Jetpack Compose. Engineered for offline reliability with a local Room database, zero startup lag, and clean Google AdMob integration.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-chip">Kotlin</span>
+                    <span class="tech-chip">Jetpack Compose</span>
+                    <span class="tech-chip">Room DB</span>
+                    <span class="tech-chip">AdMob SDK</span>
+                    <span class="tech-chip">Play Console</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Production Build</span>
+                  </div>
+                  <a href="/start-project" class="view-link">Build Similar App &rarr;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: Astro Web Portal -->
+            <article class="project-card">
+              <div class="card-preview">
+                <span class="preview-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" x2="22" y1="12" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/>
+                  </svg>
+                  Web Architecture
+                </span>
+                <span class="preview-metric">100/100 Lighthouse</span>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="category-tag">High-Speed Web Portal</div>
+                  <h2 class="project-title">Multi-Page Information Portal</h2>
+                  <p class="project-desc">
+                    A sub-second static web platform engineered with the Astro framework. Designed for rapid Googlebot crawling with pre-rendered HTML, automated XML sitemaps, structured schemas, and Cloudflare edge delivery.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-chip">Astro</span>
+                    <span class="tech-chip">Tailwind CSS</span>
+                    <span class="tech-chip">Cloudflare Pages</span>
+                    <span class="tech-chip">Search Console</span>
+                    <span class="tech-chip">Core Web Vitals</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Sub-100ms Edge Delivery</span>
+                  </div>
+                  <a href="/start-project" class="view-link">Build Fast Website &rarr;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3: Micro-Tool Engine -->
+            <article class="project-card">
+              <div class="card-preview">
+                <span class="preview-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                  Micro-Tool
+                </span>
+                <span class="preview-metric">Zero Server Lag</span>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="category-tag">Client-Side Engine</div>
+                  <h2 class="project-title">Custom Financial & Salary Utility</h2>
+                  <p class="project-desc">
+                    An interactive client-side calculator utility providing instant formula evaluation without server-side round trips. Engineered for high user retention and organic search rank performance.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-chip">JavaScript / TypeScript</span>
+                    <span class="tech-chip">Astro</span>
+                    <span class="tech-chip">Zero Server Delay</span>
+                    <span class="tech-chip">Organic SEO</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Live Architecture</span>
+                  </div>
+                  <a href="/start-project" class="view-link">Build a Tool &rarr;</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4: Image & Asset Processing Utility -->
+            <article class="project-card">
+              <div class="card-preview">
+                <span class="preview-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                    <circle cx="9" cy="9" r="2"/>
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                  </svg>
+                  Browser Utility
+                </span>
+                <span class="preview-metric">100% Client-Side</span>
+              </div>
+              <div class="card-body">
+                <div>
+                  <div class="category-tag">Document Utility</div>
+                  <h2 class="project-title">Document & Image Compression Utility</h2>
+                  <p class="project-desc">
+                    A secure browser-based image resizing and compression utility. Runs entirely in the client browser with HTML5 Canvas, ensuring privacy with zero user files uploaded to external servers.
+                  </p>
+                  <div class="tech-tags">
+                    <span class="tech-chip">HTML5 Canvas</span>
+                    <span class="tech-chip">Client Privacy</span>
+                    <span class="tech-chip">Zero Uploads</span>
+                    <span class="tech-chip">Static Edge</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Privacy First</span>
+                  </div>
+                  <a href="/start-project" class="view-link">Configure Project &rarr;</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Banner -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Have a specific application in mind?</h3>
+              <p>We build production-ready Android apps and high-speed web platforms tailored to your vision.</p>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <a href="/start-project" class="btn btn-primary">Start a Project</a>
+              <a href="/contact" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-link" style="margin-bottom: 12px;">
+              <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">L</div>
+              <span style="font-size: 1.1rem;">LIDKA GLOBAL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate-500); line-height: 1.6; margin-bottom: 8px;">
+              Independent software and app engineering firm creating lightweight, scalable tools.
+            </p>
+            <p style="font-size: 0.8rem; color: var(--slate-700); font-family: 'JetBrains Mono', monospace;">
+              lidkaglobal.com
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/start-project">Start Project</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>SEO & Legal</h5>
+            <ul>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Direct Contact</h5>
+            <ul>
+              <li>
+                <a href={`mailto:${contactEmail}`} style="font-weight: 600; color: var(--primary);">
+                  {contactEmail}
+                </a>
+              </li>
+              <li style="font-size: 0.8rem; color: var(--slate-500); margin-top: 8px;">
+                Responses provided within 24 business hours.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; {currentYear} LIDKA GLOBAL. All rights reserved.</div>
+          <div>
+            <a href="/privacy" style="text-decoration: none; color: var(--slate-500); margin-right: 16px;">Privacy</a>
+            <a href="/terms" style="text-decoration: none; color: var(--slate-500);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Drawer Script -->
+    <script is:inline>
+      const btn = document.getElementById('mobileBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    </script>
+  </body>
+</html>
