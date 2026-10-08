@@ -1,0 +1,591 @@
+---
+// src/pages/terms.astro
+// LIDKA GLOBAL - Universal Terms of Service (Play Console, AdMob & Web Compliant)
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const pageUrl = `${siteUrl}/terms`;
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "Terms and Conditions of Service — LIDKA GLOBAL";
+const pageDescription = "Official Terms of Service and Conditions governing the use of LIDKA GLOBAL mobile applications, Google Play releases, and web platforms.";
+const currentYear = new Date().getFullYear();
+const lastUpdated = "October 2026";
+
+// Schema.org Structured Data for Googlebot & Search Console
+const termsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "name": companyName,
+        "url": siteUrl
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Terms of Service",
+            "item": pageUrl
+          }
+        ]
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO & Indexation -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
+
+    <!-- Schema Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(termsSchema)} />
+
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --slate-700: #334155;
+        --slate-600: #475569;
+        --slate-500: #64748b;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #ffffff;
+        color: var(--slate-900);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--slate-900);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .page-hero {
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--slate-200);
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--slate-900);
+        margin-bottom: 8px;
+      }
+
+      .last-updated {
+        font-size: 0.88rem;
+        color: var(--slate-500);
+      }
+
+      .terms-content {
+        padding: 50px 0 90px;
+      }
+
+      .terms-section {
+        margin-bottom: 40px;
+      }
+
+      .terms-section h2 {
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin-bottom: 14px;
+        letter-spacing: -0.4px;
+      }
+
+      .terms-section h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--slate-800);
+        margin: 20px 0 10px;
+      }
+
+      .terms-section p {
+        font-size: 0.96rem;
+        color: var(--slate-700);
+        margin-bottom: 14px;
+      }
+
+      .terms-section ul {
+        margin-left: 24px;
+        margin-bottom: 16px;
+      }
+
+      .terms-section li {
+        font-size: 0.95rem;
+        color: var(--slate-700);
+        margin-bottom: 8px;
+      }
+
+      .highlight-box {
+        background: var(--slate-50);
+        border: 1px solid var(--slate-200);
+        border-left: 4px solid var(--primary);
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin: 20px 0;
+        font-size: 0.92rem;
+        color: var(--slate-700);
+      }
+
+      footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 64px 0 32px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-col h5 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.88rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--slate-200);
+        font-size: 0.82rem;
+        color: var(--slate-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+        background: white;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate-700);
+        font-weight: 600;
+        padding: 6px 0;
+      }
+
+      @media (max-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav-bar">
+        <a href="/" class="logo-link">
+          <div class="logo-badge">L</div>
+          <span>LIDKA GLOBAL</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <button id="mobileBtn" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="badge-pill">Legal Terms & Usage Agreement</div>
+          <h1 class="page-title">Terms of Service</h1>
+          <p class="last-updated">Last Updated: {lastUpdated} | Effective Date: {lastUpdated}</p>
+        </div>
+      </section>
+
+      <!-- Terms Content -->
+      <article class="terms-content">
+        <div class="container">
+
+          <div class="terms-section">
+            <h2>1. Agreement to Terms</h2>
+            <p>
+              These Terms of Service ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and <strong>{companyName}</strong> ("we", "us", or "our"), governing your access to and use of <strong>lidkaglobal.com</strong> and any mobile applications, software tools, or utilities published by us via the Google Play Store or other distribution channels.
+            </p>
+            <p>
+              By visiting our website, downloading, installing, or using our applications, you confirm that you have read, understood, and agreed to be bound by these Terms and our <a href="/privacy" style="color: var(--primary);">Privacy Policy</a>. If you do not agree to these Terms, you must discontinue use and uninstall our applications immediately.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>2. Google Play Store & Platform Terms</h2>
+            <p>
+              If you access or download our applications from the Google Play Store, you acknowledge and agree that:
+            </p>
+            <ul>
+              <li>These Terms are concluded solely between you and {companyName}, and not with Google LLC or its affiliates.</li>
+              <li>Google is not responsible for our applications, their content, maintenance, support, or warranty claims.</li>
+              <li>You must comply with the applicable <a href="https://play.google.com/about/play-terms/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Google Play Terms of Service</a> and any other platform rules while using our applications.</li>
+            </ul>
+          </div>
+
+          <div class="terms-section">
+            <h2>3. License & Intellectual Property Rights</h2>
+            <p>
+              Subject to your ongoing compliance with these Terms, {companyName} grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and use our applications and web utilities solely for your personal, non-commercial use on compatible devices.
+            </p>
+            <p>
+              All copyrights, trademarks, software code (including Kotlin, Compose, JavaScript, and Astro components), designs, graphics, and brand assets are the exclusive property of {companyName}. Except as expressly provided, no license or ownership right is transferred to you.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>4. Prohibited User Conduct</h2>
+            <p>You agree not to engage in any of the following unauthorized activities:</p>
+            <ul>
+              <li>Decompiling, reverse engineering, disassembling, or extracting the source code of our Android APK/AAB builds or web services.</li>
+              <li>Attempting to circumvent, disable, or tamper with security features, in-app purchases, or advertisement verification mechanisms.</li>
+              <li>Automating access to our websites or services through scrapers, bots, or unauthorized spiders.</li>
+              <li>Using our software for any unlawful purpose, fraudulent scheme, or violation of local, state, national, or international regulations.</li>
+            </ul>
+          </div>
+
+          <div class="terms-section">
+            <h2>5. Third-Party Advertising (Google AdMob) & External Links</h2>
+            <p>
+              Our free applications and web utilities may display advertisements served by <strong>Google AdMob</strong> and other authorized third-party ad networks. 
+            </p>
+            <div class="highlight-box">
+              <strong>Ad Disclaimer:</strong> We do not endorse, sponsor, or assume responsibility for any product, service, or external website advertised via Google AdMob banners, interstitials, or rewarded ads. Any interactions, transactions, or communications you enter with third-party advertisers are solely between you and that third party.
+            </div>
+          </div>
+
+          <div class="terms-section">
+            <h2>6. App Updates, Maintenance & Modifications</h2>
+            <p>
+              We continually work to improve our software. We reserve the right to update, modify, patch, or temporarily suspend any mobile application or web portal at any time to improve performance, fix bugs, address security concerns, or comply with Google Play Developer Policies.
+            </p>
+            <p>
+              You agree that updates may download and install automatically depending on your device settings in the Google Play Store.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>7. Disclaimer of Warranties</h2>
+            <p>
+              TO THE MAXIMUM EXTENT PERMITTED BY LAW, ALL SERVICES, MOBILE APPLICATIONS, AND CONTENT PROVIDED BY {companyName} ARE PROVIDED ON AN <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+            </p>
+            <p>
+              WE EXPRESSLY DISCLAIM ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT GUARANTEE THAT OUR SOFTWARE WILL RUN UNINTERRUPTED, COMPLETELY ERROR-FREE, OR COMPATIBLE WITH ALL DEVICE HARDWARE OR ANDROID OPERATING SYSTEM VERSIONS.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>8. Limitation of Liability</h2>
+            <p>
+              IN NO EVENT SHALL {companyName}, ITS FOUNDERS, DEVELOPERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR EXEMPLARY DAMAGES (INCLUDING LOSS OF DATA, DEVICE MALFUNCTION, OR BUSINESS INTERRUPTION) ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE OUR APPLICATIONS OR WEBSITES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>9. Termination</h2>
+            <p>
+              These Terms remain in effect until terminated by either you or us. You may terminate these Terms at any time by uninstalling our applications and ceasing all use of our services. We reserve the right to terminate your access or license immediately without notice if you fail to comply with any provision of these Terms.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>10. Governing Law</h2>
+            <p>
+              These Terms shall be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles. Any dispute arising out of or related to these Terms or our services shall be subject to the exclusive jurisdiction of the competent courts in Tamil Nadu, India.
+            </p>
+          </div>
+
+          <div class="terms-section">
+            <h2>11. Contact & Legal Notices</h2>
+            <p>
+              If you have any questions, legal concerns, or inquiries regarding these Terms of Service, please contact us:
+            </p>
+            <div class="highlight-box">
+              <strong>{companyName}</strong><br />
+              Official Website: <a href={siteUrl} style="color: var(--primary);">{siteUrl}</a><br />
+              Legal & Compliance Contact: <a href={`mailto:${contactEmail}`} style="color: var(--primary);">{contactEmail}</a>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-link" style="margin-bottom: 12px;">
+              <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">L</div>
+              <span style="font-size: 1.1rem;">LIDKA GLOBAL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate-500); line-height: 1.6; margin-bottom: 8px;">
+              Independent software and app engineering firm creating lightweight, scalable tools.
+            </p>
+            <p style="font-size: 0.8rem; color: var(--slate-700); font-family: 'JetBrains Mono', monospace;">
+              lidkaglobal.com
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Legal & Security</h5>
+            <ul>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms" style="color: var(--primary);">Terms of Service</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li>
+                <a href={`mailto:${contactEmail}`} style="font-weight: 600; color: var(--primary);">
+                  {contactEmail}
+                </a>
+              </li>
+              <li style="font-size: 0.8rem; color: var(--slate-500); margin-top: 8px;">
+                Direct inquiries answered within 24 business hours.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; {currentYear} LIDKA GLOBAL. All rights reserved.</div>
+          <div>
+            <a href="/privacy" style="text-decoration: none; color: var(--slate-500); margin-right: 16px;">Privacy</a>
+            <a href="/terms" style="text-decoration: none; color: var(--slate-500);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Drawer Script -->
+    <script is:inline>
+      const btn = document.getElementById('mobileBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    </script>
+  </body>
+</html>
