@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lidkaglobal.com/sitemap-index.xml
+
+Disallow: /admin/
+Disallow: /private/
+Disallow: /draft/
+Disallow: /api/
+Disallow: /_astro/
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
