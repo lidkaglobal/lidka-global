@@ -1,0 +1,692 @@
+---
+// src/pages/privacy.astro
+// LIDKA GLOBAL - Official Privacy Policy (Google Play & AdMob Compliant)
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const pageUrl = `${siteUrl}/privacy`;
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "Privacy Policy — LIDKA GLOBAL";
+const pageDescription = "Official Privacy Policy for LIDKA GLOBAL mobile applications and web services. Comprehensive disclosures for Google Play Console, Google AdMob, and analytics.";
+const currentYear = new Date().getFullYear();
+const lastUpdated = "October 2026";
+
+// Schema.org Structured Data
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "name": companyName,
+        "url": siteUrl
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": pageUrl
+          }
+        ]
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO & Indexation -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
+
+    <!-- Schema Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(privacySchema)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --slate-700: #334155;
+        --slate-600: #475569;
+        --slate-500: #64748b;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #ffffff;
+        color: var(--slate-900);
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--slate-900);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      /* Hero Header */
+      .page-hero {
+        padding: 60px 0 40px;
+        border-bottom: 1px solid var(--slate-200);
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--slate-900);
+        margin-bottom: 8px;
+      }
+
+      .last-updated {
+        font-size: 0.88rem;
+        color: var(--slate-500);
+      }
+
+      /* Policy Content Styling */
+      .policy-content {
+        padding: 50px 0 90px;
+      }
+
+      .policy-section {
+        margin-bottom: 40px;
+      }
+
+      .policy-section h2 {
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: var(--slate-900);
+        margin-bottom: 14px;
+        letter-spacing: -0.4px;
+      }
+
+      .policy-section h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--slate-800);
+        margin: 20px 0 10px;
+      }
+
+      .policy-section p {
+        font-size: 0.96rem;
+        color: var(--slate-700);
+        margin-bottom: 14px;
+      }
+
+      .policy-section ul {
+        margin-left: 24px;
+        margin-bottom: 16px;
+      }
+
+      .policy-section li {
+        font-size: 0.95rem;
+        color: var(--slate-700);
+        margin-bottom: 8px;
+      }
+
+      .highlight-box {
+        background: var(--slate-50);
+        border: 1px solid var(--slate-200);
+        border-left: 4px solid var(--primary);
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin: 20px 0;
+        font-size: 0.92rem;
+        color: var(--slate-700);
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 0.88rem;
+      }
+
+      .data-table th, .data-table td {
+        border: 1px solid var(--slate-200);
+        padding: 12px 16px;
+        text-align: left;
+      }
+
+      .data-table th {
+        background-color: var(--slate-100);
+        font-weight: 700;
+        color: var(--slate-800);
+      }
+
+      .data-table td {
+        color: var(--slate-700);
+      }
+
+      footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 64px 0 32px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-col h5 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.88rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--slate-200);
+        font-size: 0.82rem;
+        color: var(--slate-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+        background: white;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate-700);
+        font-weight: 600;
+        padding: 6px 0;
+      }
+
+      @media (max-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav-bar">
+        <a href="/" class="logo-link">
+          <div class="logo-badge">L</div>
+          <span>LIDKA GLOBAL</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <button id="mobileBtn" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="badge-pill">Legal & Compliance Documentation</div>
+          <h1 class="page-title">Privacy Policy</h1>
+          <p class="last-updated">Last Updated: {lastUpdated} | Effective Date: {lastUpdated}</p>
+        </div>
+      </section>
+
+      <!-- Content -->
+      <article class="policy-content">
+        <div class="container">
+          
+          <div class="policy-section">
+            <h2>1. Introduction</h2>
+            <p>
+              This Privacy Policy explains how <strong>{companyName}</strong> ("we", "us", or "our"), operator of <strong>lidkaglobal.com</strong> and associated mobile applications distributed via the Google Play Store, collects, uses, and discloses information when you access our websites or install and use our Android applications.
+            </p>
+            <p>
+              We are committed to user privacy. We design our applications and websites according to privacy-by-design principles, collecting only the minimum data required to deliver core functionality, display advertisements, and analyze app stability.
+            </p>
+          </div>
+
+          <div class="policy-section">
+            <h2>2. Information We Collect</h2>
+            <p>
+              We do not require users to create personal accounts, register, or provide real names to use our utility applications. The categories of information processed include:
+            </p>
+
+            <h3>A. Information Automatically Collected</h3>
+            <ul>
+              <li><strong>Device & Hardware Information:</strong> Device model, operating system version (Android API level), screen resolution, preferred language, and network connection type.</li>
+              <li><strong>Advertising Identifiers:</strong> Google Advertising ID (AAID) provided by Google Play Services, used strictly in accordance with Google Play developer policies.</li>
+              <li><strong>Crash & Performance Logs:</strong> Diagnostic data, stack traces, and crash timestamps collected anonymously to troubleshoot bugs and improve app stability.</li>
+              <li><strong>Approximate Location:</strong> Coarse network-level location (such as country or region derived from IP address) used to serve localized content and ads. We <em>do not</em> collect precise GPS location data.</li>
+            </ul>
+
+            <h3>B. Information You Voluntarily Provide</h3>
+            <p>
+              If you contact us directly via email at <code>{contactEmail}</code>, we receive your email address, name, and the contents of your message. We use this strictly to respond to your technical questions, bug reports, or feature requests.
+            </p>
+          </div>
+
+          <!-- Play Console Data Safety Mapping -->
+          <div class="policy-section">
+            <h2>3. Google Play Data Safety Declaration Mapping</h2>
+            <p>
+              To help you understand how our applications align with the Google Play Console Data Safety section, here is a summary of data practices:
+            </p>
+
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Data Category</th>
+                  <th>Collected / Shared</th>
+                  <th>Purpose</th>
+                  <th>Encrypted in Transit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Device or other IDs (AAID)</td>
+                  <td>Collected & Shared with AdMob</td>
+                  <td>Advertising & Analytics</td>
+                  <td>Yes (HTTPS / TLS)</td>
+                </tr>
+                <tr>
+                  <td>Crash logs & Diagnostics</td>
+                  <td>Collected anonymously</td>
+                  <td>App functionality & Bug fixing</td>
+                  <td>Yes (HTTPS / TLS)</td>
+                </tr>
+                <tr>
+                  <td>Personal Information (Name, Phone, Address)</td>
+                  <td><strong>Not Collected</strong></td>
+                  <td>N/A</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>Precise Location (GPS)</td>
+                  <td><strong>Not Collected</strong></td>
+                  <td>N/A</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>Financial / Payment Info</td>
+                  <td><strong>Not Collected</strong></td>
+                  <td>N/A</td>
+                  <td>N/A</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Google AdMob Disclosures -->
+          <div class="policy-section">
+            <h2>4. Third-Party Services & Advertising (Google AdMob)</h2>
+            <p>
+              Our applications may display advertisements served by <strong>Google AdMob</strong> and its mediation partners. Third-party ad networks collect and process identifiers to deliver personalized or non-personalized advertisements, limit ad repetition, and measure ad performance.
+            </p>
+            <div class="highlight-box">
+              <strong>Google AdMob Disclosure:</strong> Google AdMob uses unique device identifiers (Google Advertising ID) and cookies/SDK technology to personalize ads or serve contextual ads in accordance with user consent choices.
+            </div>
+            <p>
+              You can learn more about how Google handles information from apps that use its services by visiting:
+              <br />
+              <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">How Google uses information from sites or apps that use our services</a>.
+            </p>
+            <p>
+              Review the privacy policies of our third-party SDK providers:
+            </p>
+            <ul>
+              <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Google Privacy & Terms</a></li>
+              <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Google AdMob Policies & Restrictions</a></li>
+              <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Google Advertising Settings & Opt-Outs</a></li>
+            </ul>
+          </div>
+
+          <!-- User Opt-Out -->
+          <div class="policy-section">
+            <h2>5. How You Can Control Your Data & Opt Out</h2>
+            <p>Users maintain full control over advertising identifiers on Android devices:</p>
+            <ul>
+              <li><strong>Reset or Delete Advertising ID:</strong> On Android devices, open <strong>Settings &gt; Google &gt; Ads</strong> (or <em>Privacy &gt; Ads</em>). You can reset your Advertising ID or delete it entirely to prevent cross-app ad tracking.</li>
+              <li><strong>App Permissions:</strong> You can review and revoke any device permission at any time via your device's <em>Settings &gt; Apps &gt; [App Name] &gt; Permissions</em>.</li>
+              <li><strong>Personal Data Deletion:</strong> If you have communicated with us via email and want your correspondence deleted, email us at <code>{contactEmail}</code> and we will permanently delete it within 30 days.</li>
+            </ul>
+          </div>
+
+          <!-- Children's Privacy -->
+          <div class="policy-section">
+            <h2>6. Children's Online Privacy Protection (COPPA / GDPR-K)</h2>
+            <p>
+              Our applications and websites are not designed for or directed to children under the age of 13 (or under 16 in the European Economic Area). We do not knowingly collect personally identifiable information from children.
+            </p>
+            <p>
+              If a parent or guardian discovers that a child has provided us with personal information without parental consent, please contact us at <code>{contactEmail}</code>. We will promptly take steps to delete such data from our records.
+            </p>
+          </div>
+
+          <!-- GDPR & European Rights -->
+          <div class="policy-section">
+            <h2>7. European Privacy Rights (GDPR / UK GDPR)</h2>
+            <p>
+              If you reside in the European Economic Area (EEA) or the United Kingdom, you have rights regarding your personal data:
+            </p>
+            <ul>
+              <li>The right to access, rectify, or erase personal data.</li>
+              <li>The right to restrict or object to certain processing activities.</li>
+              <li>The right to withdraw consent at any time where processing is based on consent (such as for personalized ads served via Google User Messaging Platform / Consent Management Platforms).</li>
+            </ul>
+          </div>
+
+          <!-- California Rights -->
+          <div class="policy-section">
+            <h2>8. California Privacy Rights (CCPA / CPRA)</h2>
+            <p>
+              Under the California Consumer Privacy Act (CCPA) and California Privacy Rights Act (CPRA), California residents have specific rights regarding personal information:
+            </p>
+            <ul>
+              <li><strong>Right to Know:</strong> You may request disclosure of categories of personal information collected.</li>
+              <li><strong>Right to Delete:</strong> You can request deletion of personal information held by us.</li>
+              <li><strong>No Sale of Personal Information:</strong> We do not sell personal data for monetary compensation. Ad networks may process device identifiers for tailored advertising as disclosed under California law.</li>
+            </ul>
+          </div>
+
+          <!-- Data Security -->
+          <div class="policy-section">
+            <h2>9. Data Security & Storage</h2>
+            <p>
+              We implement industry-standard security measures, including HTTPS encryption in transit (TLS 1.3), to protect any communications or network transmissions between our applications, websites, and third-party APIs. However, no electronic transmission over the internet can be guaranteed 100% secure.
+            </p>
+          </div>
+
+          <!-- Changes to Policy -->
+          <div class="policy-section">
+            <h2>10. Updates to This Privacy Policy</h2>
+            <p>
+              We may revise this Privacy Policy periodically to reflect changes in our applications, technical infrastructure, or legal requirements. When updates are published, the "Last Updated" date at the top of this page will be updated accordingly. Continued use of our apps or websites after updates constitutes acceptance of the revised policy.
+            </p>
+          </div>
+
+          <!-- Contact Us -->
+          <div class="policy-section">
+            <h2>11. Contact Information</h2>
+            <p>
+              If you have any questions, compliance requests, or data privacy concerns regarding this policy or our mobile applications, please reach out to us:
+            </p>
+            <div class="highlight-box">
+              <strong>{companyName}</strong><br />
+              Official Website: <a href={siteUrl} style="color: var(--primary);">{siteUrl}</a><br />
+              Compliance Email: <a href={`mailto:${contactEmail}`} style="color: var(--primary);">{contactEmail}</a>
+            </div>
+          </div>
+
+        </div>
+      </article>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-link" style="margin-bottom: 12px;">
+              <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">L</div>
+              <span style="font-size: 1.1rem;">LIDKA GLOBAL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate-500); line-height: 1.6; margin-bottom: 8px;">
+              Independent software and app engineering firm creating lightweight, scalable tools.
+            </p>
+            <p style="font-size: 0.8rem; color: var(--slate-700); font-family: 'JetBrains Mono', monospace;">
+              lidkaglobal.com
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Legal & Security</h5>
+            <ul>
+              <li><a href="/privacy" style="color: var(--primary);">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Contact</h5>
+            <ul>
+              <li>
+                <a href={`mailto:${contactEmail}`} style="font-weight: 600; color: var(--primary);">
+                  {contactEmail}
+                </a>
+              </li>
+              <li style="font-size: 0.8rem; color: var(--slate-500); margin-top: 8px;">
+                Direct inquiries answered within 24 business hours.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; {currentYear} LIDKA GLOBAL. All rights reserved.</div>
+          <div>
+            <a href="/privacy" style="text-decoration: none; color: var(--slate-500); margin-right: 16px;">Privacy</a>
+            <a href="/terms" style="text-decoration: none; color: var(--slate-500);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Drawer Script -->
+    <script is:inline>
+      const btn = document.getElementById('mobileBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    </script>
+  </body>
+</html>
