@@ -1,0 +1,11 @@
+# Redirect non-www to www (optional - choose one approach)
+# https://lidka-global.com/* https://www.lidka-global.com/:splat 301!
+
+# Redirect old URLs if any
+# /old-page /new-page 301
+
+# Keep API routes available
+/api/* /api/:splat 200
+
+# Security - block suspicious patterns
+/*\?*utm_* /*?:splat 200
