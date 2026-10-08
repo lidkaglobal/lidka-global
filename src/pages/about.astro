@@ -1,62 +1,786 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+// src/pages/about.astro
+// LIDKA GLOBAL - Official About Page
+const companyName = "LIDKA GLOBAL";
+const siteUrl = "https://lidkaglobal.com";
+const pageUrl = `${siteUrl}/about`;
+const contactEmail = "lidkaglobal@gmail.com";
+const pageTitle = "About LIDKA GLOBAL — Mission, Engineering Philosophy & Vision";
+const pageDescription = "Learn about LIDKA GLOBAL, an independent software and digital venture dedicated to crafting purposeful Android apps and high-speed web platforms.";
+const currentYear = new Date().getFullYear();
+
+// SEO Schema.org (JSON-LD) for About Page
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": pageUrl,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDescription,
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        "name": companyName,
+        "url": siteUrl
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": pageUrl
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": companyName,
+      "url": siteUrl,
+      "email": contactEmail,
+      "description": pageDescription
+    }
+  ]
+};
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Essentials -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={pageUrl} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content={companyName} />
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+    <!-- Schema Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(aboutSchema)} />
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-hover: #1d4ed8;
+        --primary-light: #eff6ff;
+        --slate-900: #0f172a;
+        --slate-800: #1e293b;
+        --slate-700: #334155;
+        --slate-600: #475569;
+        --slate-500: #64748b;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --emerald: #10b981;
+      }
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #ffffff;
+        color: var(--slate-900);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Navigation */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 72px;
+      }
+
+      .logo-link {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--slate-900);
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-badge {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, #2563eb, #4f46e5);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1.1rem;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover, .nav-links a.active {
+        color: var(--primary);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+        box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn-dark {
+        background-color: var(--slate-900);
+        color: white;
+      }
+
+      .btn-dark:hover {
+        background-color: var(--slate-800);
+      }
+
+      /* Hero */
+      .page-hero {
+        padding: 70px 0 50px;
+        text-align: center;
+        background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 9999px;
+        background-color: var(--primary-light);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        border: 1px solid rgba(37, 99, 235, 0.15);
+      }
+
+      .page-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        letter-spacing: -1.2px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .page-desc {
+        font-size: 1.15rem;
+        color: var(--slate-600);
+        max-width: 680px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Story Section */
+      .story-section {
+        padding: 80px 0;
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .section-tag {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .section-heading {
+        font-size: 2.2rem;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        color: var(--slate-900);
+        margin-bottom: 20px;
+        line-height: 1.25;
+      }
+
+      .story-text {
+        font-size: 1rem;
+        color: var(--slate-600);
+        margin-bottom: 20px;
+      }
+
+      /* Story Visual Box */
+      .stat-card-box {
+        background: var(--slate-900);
+        border-radius: 20px;
+        padding: 36px;
+        color: white;
+        border: 1px solid var(--slate-800);
+        box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.25);
+      }
+
+      .stat-item {
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #60a5fa;
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-top: 4px;
+      }
+
+      /* Principles Grid */
+      .principles-section {
+        background-color: var(--slate-50);
+        padding: 90px 0;
+        border-top: 1px solid var(--slate-200);
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .principles-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 48px;
+      }
+
+      .principle-card {
+        background: white;
+        padding: 32px 28px;
+        border-radius: 16px;
+        border: 1px solid var(--slate-200);
+      }
+
+      .principle-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--primary-light);
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .principle-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--slate-900);
+        margin-bottom: 10px;
+      }
+
+      .principle-desc {
+        font-size: 0.92rem;
+        color: var(--slate-600);
+        line-height: 1.6;
+      }
+
+      /* Technical Foundation */
+      .tech-foundation-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .tech-tag {
+        padding: 8px 18px;
+        border-radius: 8px;
+        background: var(--slate-100);
+        border: 1px solid var(--slate-200);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--slate-700);
+      }
+
+      /* CTA Banner */
+      .cta-section {
+        padding: 0 0 90px;
+      }
+
+      .cta-box {
+        background: linear-gradient(135deg, var(--slate-900), #1e293b);
+        border-radius: 24px;
+        padding: 56px 48px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .cta-box h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+      }
+
+      .cta-box p {
+        color: #94a3b8;
+        font-size: 1rem;
+        max-width: 520px;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--slate-50);
+        border-top: 1px solid var(--slate-200);
+        padding: 64px 0 32px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-col h5 {
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        color: var(--slate-900);
+        margin-bottom: 16px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+      }
+
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-col ul li a {
+        text-decoration: none;
+        color: var(--slate-600);
+        font-size: 0.88rem;
+        transition: color 0.2s ease;
+      }
+
+      .footer-col ul li a:hover {
+        color: var(--primary);
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid var(--slate-200);
+        font-size: 0.82rem;
+        color: var(--slate-500);
+      }
+
+      .mobile-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 24px;
+        background: white;
+        border-bottom: 1px solid var(--slate-200);
+      }
+
+      .mobile-menu a {
+        text-decoration: none;
+        color: var(--slate-700);
+        font-weight: 600;
+        padding: 6px 0;
+      }
+
+      /* Responsive Media Queries */
+      @media (max-width: 900px) {
+        .story-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .principles-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-box {
+          flex-direction: column;
+          text-align: center;
+          gap: 28px;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-links, .header-cta {
+          display: none;
+        }
+
+        .mobile-toggle {
+          display: block;
+        }
+
+        .page-title {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Crawlable Navigation Header -->
+    <header>
+      <div class="container nav-bar">
+        <a href="/" class="logo-link">
+          <div class="logo-badge">L</div>
+          <span>LIDKA GLOBAL</span>
+        </a>
+
+        <!-- Individual Crawlable Links -->
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about" class="active">About</a>
+          <a href="/contact">Contact</a>
+        </nav>
+
+        <div class="header-cta">
+          <a href="/start-project" class="btn btn-dark">Start Project &rarr;</a>
+        </div>
+
+        <button id="mobileBtn" class="mobile-toggle" aria-label="Toggle Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown -->
+      <nav id="mobileMenu" class="mobile-menu" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about" style="color: var(--primary);">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/start-project" style="color: var(--primary);">Start Project &rarr;</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Header -->
+      <section class="page-hero">
+        <div class="container">
+          <div class="badge-pill">
+            <span>About Us</span>
+          </div>
+          <h1 class="page-title">Who We Are</h1>
+          <p class="page-desc">
+            LIDKA GLOBAL is an independent technology and software venture focused on engineering lean native Android apps and high-performance web systems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Mission & Story -->
+      <section class="story-section">
+        <div class="container story-grid">
+          <div>
+            <span class="section-tag">Our Mission</span>
+            <h2 class="section-heading">Purposeful software without unnecessary complexity.</h2>
+            <p class="story-text">
+              The modern web and mobile ecosystems are often bloated with excessive scripts, heavy tracking libraries, and sluggish interfaces. At <strong>LIDKA GLOBAL</strong>, we believe software should be fast, reliable, and straightforward.
+            </p>
+            <p class="story-text">
+              We specialize in native Android development with modern Kotlin and declarative Jetpack Compose, alongside static-first web platforms built on Astro. Every product we design prioritizes sub-second load times, clean architecture, and respect for user device resources.
+            </p>
+            <div style="margin-top: 28px;">
+              <a href="/start-project" class="btn btn-primary">Start a Project With Us</a>
+            </div>
+          </div>
+
+          <!-- Graphical Metric Box -->
+          <div class="stat-card-box">
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Native & Modern Architecture Standards</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">&lt; 100ms</div>
+              <div class="stat-label">Target Global Edge Delivery Latency</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">Zero</div>
+              <div class="stat-label">Unnecessary Bloatware or Clutter</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Principles -->
+      <section class="principles-section">
+        <div class="container">
+          <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+            <span class="section-tag">Guiding Principles</span>
+            <h2 style="font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px;">How We Engineer Software</h2>
+          </div>
+
+          <div class="principles-grid">
+            <div class="principle-card">
+              <div class="principle-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <h3 class="principle-title">Speed First</h3>
+              <p class="principle-desc">
+                We optimize every line of code. From Android coroutines to pre-rendered Astro pages, speed is treated as a core feature, not an afterthought.
+              </p>
+            </div>
+
+            <div class="principle-card">
+              <div class="principle-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+                </svg>
+              </div>
+              <h3 class="principle-title">Clean Reliability</h3>
+              <p class="principle-desc">
+                We adhere to strict separation of concerns, offline-first database structures, and semantic markup that search engines and users can rely on.
+              </p>
+            </div>
+
+            <div class="principle-card">
+              <div class="principle-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="18" height="18" x="3" y="3" rx="2"/>
+                  <path d="M7 7h10M7 12h10M7 17h10"/>
+                </svg>
+              </div>
+              <h3 class="principle-title">Intuitive UX</h3>
+              <p class="principle-desc">
+                Simple interfaces that solve real problems. We eliminate confusing navigation so users achieve their goals immediately with zero learning curve.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tech Ecosystem -->
+      <section class="tech-foundation-section">
+        <div class="container">
+          <span class="section-tag">Core Stack</span>
+          <h3 style="font-size: 1.6rem; font-weight: 800;">Our Technical Stack</h3>
+          <p style="color: var(--slate-600); max-width: 500px; margin: 8px auto 0; font-size: 0.95rem;">
+            We build exclusively with modern, proven development frameworks.
+          </p>
+
+          <div class="tech-badges">
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Jetpack Compose</span>
+            <span class="tech-tag">Android Studio</span>
+            <span class="tech-tag">Astro</span>
+            <span class="tech-tag">Cloudflare Edge CDN</span>
+            <span class="tech-tag">Google Play Console</span>
+            <span class="tech-tag">Google Search Console</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Banner -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-box">
+            <div>
+              <h3>Want to collaborate with LIDKA GLOBAL?</h3>
+              <p>Let's turn your application concept into a well-crafted digital product.</p>
+            </div>
+            <div style="display: flex; gap: 12px;">
+              <a href="/start-project" class="btn btn-primary">Start a Project</a>
+              <a href="/contact" class="btn" style="background: rgba(255,255,255,0.1); color: white;">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="logo-link" style="margin-bottom: 12px;">
+              <div class="logo-badge" style="width: 30px; height: 30px; font-size: 0.9rem;">L</div>
+              <span style="font-size: 1.1rem;">LIDKA GLOBAL</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--slate-500); line-height: 1.6; margin-bottom: 8px;">
+              Independent software and app engineering firm creating lightweight, scalable tools.
+            </p>
+            <p style="font-size: 0.8rem; color: var(--slate-700); font-family: 'JetBrains Mono', monospace;">
+              lidkaglobal.com
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Navigation</h5>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/services">Services</a></li>
+              <li><a href="/portfolio">Portfolio</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/start-project">Start Project</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>SEO & Legal</h5>
+            <ul>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/robots.txt">robots.txt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Direct Contact</h5>
+            <ul>
+              <li>
+                <a href={`mailto:${contactEmail}`} style="font-weight: 600; color: var(--primary);">
+                  {contactEmail}
+                </a>
+              </li>
+              <li style="font-size: 0.8rem; color: var(--slate-500); margin-top: 8px;">
+                Responses provided within 24 business hours.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>&copy; {currentYear} LIDKA GLOBAL. All rights reserved.</div>
+          <div>
+            <a href="/privacy" style="text-decoration: none; color: var(--slate-500); margin-right: 16px;">Privacy</a>
+            <a href="/terms" style="text-decoration: none; color: var(--slate-500);">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Drawer Script -->
+    <script is:inline>
+      const btn = document.getElementById('mobileBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    </script>
+  </body>
+</html>
