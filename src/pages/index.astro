@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const title = "LIDKA GLOBAL — Modern Android Apps & Web Engineering";
 const description = "LIDKA GLOBAL builds high-performance Android applications and modern web platforms with clean code, responsive UI, and lightning speed.";
 ---
@@ -19,33 +21,76 @@ const description = "LIDKA GLOBAL builds high-performance Android applications a
     <meta property="og:site_name" content="LIDKA GLOBAL" />
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/services">Services</a>
-        <a href="/portfolio">Portfolio</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a href="/" class="brand">LIDKA</a>
+        <div class="nav-links">
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
       </nav>
     </header>
 
-    <main>
-      <section>
-        <h1>LIDKA GLOBAL</h1>
-        <p>We engineer native apps and web systems that scale.</p>
+    <main class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Modern Android Apps & Web Engineering</p>
+          <h1>We build digital products that feel premium and perform fast.</h1>
+          <p class="lead">
+            LIDKA GLOBAL designs and develops high-performance Android apps and modern web platforms
+            with clean architecture, responsive interfaces, and scalable engineering.
+          </p>
+          <div class="actions">
+            <a href="/contact" class="button primary">Start Your Project</a>
+            <a href="/portfolio" class="button secondary">See Work</a>
+          </div>
+        </div>
+
+        <div class="hero-panel" aria-label="Company overview panel">
+          <div class="panel-card">
+            <span class="label">Core focus</span>
+            <h2>Native apps + modern web systems</h2>
+            <ul>
+              <li>Android application development</li>
+              <li>Fast web portals and product experiences</li>
+              <li>Clean product engineering and system design</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h2>What we build</h2>
-        <ul>
-          <li>Android app development</li>
-          <li>Fast web portals</li>
-          <li>Clean product engineering</li>
-        </ul>
+      <section class="services">
+        <div class="section-heading">
+          <p class="eyebrow">What we build</p>
+          <h2>Solutions shaped for growth.</h2>
+        </div>
+
+        <div class="card-grid">
+          <article class="feature-card">
+            <h3>📱 Android Apps</h3>
+            <p>High-quality native apps optimized for usability, speed, and maintainability.</p>
+          </article>
+          <article class="feature-card">
+            <h3>🌐 Web Platforms</h3>
+            <p>Modern websites and portals built for performance, SEO, and user delight.</p>
+          </article>
+          <article class="feature-card">
+            <h3>⚙️ Product Engineering</h3>
+            <p>Scalable architecture, clean code, and digital systems that evolve with your business.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-box">
+        <h2>Ready to build something great?</h2>
+        <p>Let’s turn your next idea into a product people trust and remember.</p>
+        <a href="/contact" class="button primary">Get in Touch</a>
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>© 2026 LIDKA GLOBAL</p>
     </footer>
   </body>
