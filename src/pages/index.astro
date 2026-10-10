@@ -1,89 +1,52 @@
 ---
-import '../styles/global.css';
-
-interface Props {
-  title: string;
-  description: string;
-  image?: string;
-  author?: string;
-  publishedDate?: Date;
-  modifiedDate?: Date;
-  type?: string;
-}
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const {
-  title,
-  description,
-  image,
-  author = 'LIDKA GLOBAL',
-  publishedDate,
-  modifiedDate,
-  type = 'website'
-} = Astro.props;
+const title = "LIDKA GLOBAL — Modern Android Apps & Web Engineering";
+const description = "LIDKA GLOBAL builds high-performance Android applications and modern web platforms with clean code, responsive UI, and lightning speed.";
 ---
 
-<!-- Global Metadata -->
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="theme-color" content="#2563eb" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<meta name="bingbot" content="index, follow" />
-<meta name="revisit-after" content="7 days" />
-<meta name="author" content={author} />
-<meta name="application-name" content="LIDKA GLOBAL" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<meta name="apple-mobile-web-app-title" content="LIDKA GLOBAL" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://lidkaglobal.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lidkaglobal.com/" />
+    <meta property="og:site_name" content="LIDKA GLOBAL" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
 
-<!-- Favicon & Icons -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="apple-touch-icon" href="/favicon.svg" />
+    <main>
+      <section>
+        <h1>LIDKA GLOBAL</h1>
+        <p>We engineer native apps and web systems that scale.</p>
+      </section>
 
-<!-- Sitemap & Search Console -->
-<link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
-<link rel="canonical" href={canonicalURL} />
-<meta name="generator" content={Astro.generator} />
+      <section>
+        <h2>What we build</h2>
+        <ul>
+          <li>Android app development</li>
+          <li>Fast web portals</li>
+          <li>Clean product engineering</li>
+        </ul>
+      </section>
+    </main>
 
-<!-- Font preloads for performance -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-<meta name="keywords" content="Android development, web engineering, app development, Kotlin, Astro, Cloudflare" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content={type} />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-{image && <meta property="og:image" content={image} />}
-{image && <meta property="og:image:type" content="image/jpeg" />}
-{image && <meta property="og:image:width" content="1200" />}
-{image && <meta property="og:image:height" content="630" />}
-<meta property="og:site_name" content="LIDKA GLOBAL" />
-<meta property="og:locale" content="en_US" />
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={Astro.url} />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={description} />
-{image && <meta name="twitter:image" content={image} />}
-<meta name="twitter:creator" content="@lidkaglobal" />
-
-<!-- Article Meta (if applicable) -->
-{publishedDate && <meta property="article:published_time" content={publishedDate.toISOString()} />}
-{modifiedDate && <meta property="article:modified_time" content={modifiedDate.toISOString()} />}
-{publishedDate && <meta property="article:author" content={author} />}
-
-<!-- DNS Prefetch for external resources -->
-<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <footer>
+      <p>© 2026 LIDKA GLOBAL</p>
+    </footer>
+  </body>
+</html>
