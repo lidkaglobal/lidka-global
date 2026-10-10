@@ -1,0 +1,7 @@
+This file marks the revert operation. Use Git CLI to complete the revert.
+
+To revert the latest commit, run:
+git revert 28eb1d2e62701b3e60892e040fd8c3cfcee9bcfd
+
+Or to reset to the previous commit:
+git reset --hard 44937685edf1d04d9e6628b34113c74b7c88fa14
